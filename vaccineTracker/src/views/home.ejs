@@ -19,6 +19,15 @@ input[type=email], select {
   border-radius: 4px;
   box-sizing: border-box;
 }
+input[type=date], select {
+  width: 44%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 input[type=submit] {
   width: 100%;
   background-color: #4CAF50;
@@ -53,6 +62,11 @@ div {
     <input type="text"  name="lastname" placeholder="Your last name.." required>
     <label for="lname">E-mail</label>
     <input type="email"  name="email" placeholder="Your Email.." required>
+    <label for="lname">Start Date </label>
+    <input type="date"  name="startdate"  required>
+    
+    <label for="lname">End Date </label>
+    <input type="date"  name="enddate"  required>
     <label for="lname">Pin Code</label>
     <input type="text"  name="pincode" placeholder="Your Pinciode.." required>
 

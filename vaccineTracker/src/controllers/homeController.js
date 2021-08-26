@@ -6,16 +6,18 @@ const root = function(req, res) {
 }
 
 const vaccineTracker=async function(req,res){
-    // console.log(req.query);
+    console.log(req.query.pincode);
+    
     const header = {
         'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
     };
-    const response= await fetch("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=700124&date=27-08-2021",{
+    const response= await fetch("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode="+req.query.pincode+"&date=27-08-2021",{
         
         headers: header,
     });
     
     const data=await (response.json());
+    // console.log(data);
     var s="";
     data.sessions.forEach(element => {
         // console.log(element.name,element.vaccine);
@@ -32,20 +34,20 @@ const vaccineTracker=async function(req,res){
       
       var mailOptions = {
         from: 'unacademyams@gmail.com',
-        to: 'monishghosh7@gmail.com',
-        subject: 'cazz',
+        to: req.query.email.toString(),
+        subject: 'Vaccination Slot Details',
         text: s,
       };
       
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-          return res.redirect('back');
-        } else {
-          console.log('Email sent: ' + info.response);
-          return res.redirect('back');
-        }
-      });
+      // transporter.sendMail(mailOptions, function(error, info){
+      //   if (error) {
+      //     console.log(error);
+      //     return res.redirect('back');
+      //   } else {
+      //     console.log('Email sent: ' + info.response);
+      //     return res.redirect('back');
+      //   }
+      // });
       return res.redirect('back');
     
 }
