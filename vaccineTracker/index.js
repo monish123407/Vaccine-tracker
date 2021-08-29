@@ -14,7 +14,7 @@ app.set('views', './src/views');
 
 app.use('/', router);
 
-app.listen(3000, async() =>{
+app.listen(process.env.PORT || 3000, async() =>{
     
     console.log('Server started at 3000!!');
 });
