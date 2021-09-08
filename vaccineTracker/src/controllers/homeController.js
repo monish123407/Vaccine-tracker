@@ -6,7 +6,7 @@ const root = function(req, res) {
 }
 
 const vaccineTracker=async function(req,res){
-    console.log(req.query.pincode);
+    // console.log(req.query.pincode);
     const newdate=req.query.date.split("-").reverse().join("-");
     
     const header = {
@@ -20,9 +20,11 @@ const vaccineTracker=async function(req,res){
     const data=await (response.json());
     console.log(data);
     var s="";
+    s+= "Fee Type" + "             "+"Vaccine available for dose1"+"            "+"Vaccine available for dose 2"+"           "+"Centre Name "+"            "+"Vaccine name";
+    s+="\n";
     data.sessions.forEach(element => {
         // console.log(element.name,element.vaccine);
-        s+=element.fee_type+"       "+element.available_capacity_dose1+"        "+element.available_capacity_dose2+"        "+element.name.toString()+"        "+element.vaccine;
+        s+=element.fee_type+"                    "+element.available_capacity_dose1+"                 "+element.available_capacity_dose2+"                  "+element.name.toString()+"                 "+element.vaccine;
         s+="\n";
     });
     
